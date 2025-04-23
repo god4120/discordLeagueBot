@@ -88,6 +88,20 @@ def top3(puuid):
     return top3
 
 
+def totalchamplevel(puuid):
+    """
+    Provides the total mastery score obtained from all champs
+    args: A string puuid
+    return: A string type containing the total mastery score obtained from all champs
+    """
+    url = "https://na1.api.riotgames.com"
+    endpoint = "/lol/champion-mastery/v4/scores/by-puuid/" + puuid + "?api_key=" + auth
+    response = requests.get(url + endpoint).text
+    return response
+
+
 if __name__ == "__main__":
-    print(champsplayed(parsepuuid('dux ossa', 'Famly')))
-    print(top3(parsepuuid('dux ossa', 'Famly')))
+    name = "tegotrick"
+    tag = "ttv"
+    puuid = parsepuuid(name, tag)
+    print(totalchamplevel(puuid))
